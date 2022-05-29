@@ -15,21 +15,18 @@ const ImageGrid = ({img_width, img_height}) => {
                 {
                     data?.map(({id, url, author}) => {
                         const src = `${IMG}/${id}/${img_width}/${img_height}`;
-                        const imageRef = useRef(null);
                         return (
                             <VStack
+                                key={id}
                                 spacing={1}
                                 align="flex-start"
                                 cursor="pointer"
-                                onMouseOver={() => {
-                                    imageRef.current.style.boxShadow = "0 2px 12px 0 rgb(0 0 0 / 80%)";
-                                }}
-                                onMouseOut={() => {
-                                    imageRef.current.style.boxShadow = "";
-                                }}
                             >
-                                <Flex position="relative" minW="100%" minH="240px" ref={imageRef}
+                                <Flex position="relative" minW="100%" minH="240px"
                                       transition="all 0.2s ease-in-out"
+                                      _hover={{
+                                          boxShadow: "0px 0px 10px rgba(0,0,0,0.7)"
+                                      }}
                                       onClick={async () => {
                                           await getItem(id);
                                           openSidebar();
@@ -37,6 +34,7 @@ const ImageGrid = ({img_width, img_height}) => {
 
                                 >
                                     <Image
+                                        id={id}
                                         src={src}
                                         alt={author}
                                         objectFit="cover"
