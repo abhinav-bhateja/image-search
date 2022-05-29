@@ -25,7 +25,6 @@ const Search = () => {
                     <SearchRight/>
                 </HStack>
             </InputRightElement>
-            }/>
         </InputGroup>
     )
 }
