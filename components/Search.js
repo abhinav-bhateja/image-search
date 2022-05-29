@@ -7,7 +7,9 @@ const Search = () => {
     return (
         <InputGroup>
             {active && (
-                <InputLeftElement height="100%" children={<SearchIcon color="gray.300"/>}/>
+                <InputLeftElement height="100%">
+                    <SearchIcon color="gray.300"/>
+                </InputLeftElement>
             )}
             <Input
                 borderRadius={24}
@@ -16,12 +18,13 @@ const Search = () => {
                 onFocus={() => setActive(true)}
                 onBlur={() => setActive(false)}
             />
-            <InputRightElement height="100%" children={
+            <InputRightElement height="100%">
                 <HStack spacing={4} align="center" mr={24} justify="center">
                     <ImageIcon/>
                     <VoiceSearch/>
                     <SearchRight/>
                 </HStack>
+            </InputRightElement>
             }/>
         </InputGroup>
     )
